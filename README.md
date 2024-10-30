@@ -19,13 +19,28 @@ Control Linux PC sound remotely from your phone.
 - Vitest: unit testing
 - Cypress: E2E testing
 - GitHub Actions: CI/CD
-- Tailwind CSS: styling
+- Tailwind CSS + Shadcn
 
-## Setup
+## Development
 
-1. Clone repo
-2. `pnpm install`
-3. `pnpm run dev`
+#### Spin FE server
+
+```bash
+git clone https://github.com/undg/pr-web
+cd pr-web
+pnpm install
+pnpm run dev
+```
+
+IMPORTANT: You need to run [go-prapi's](https://github.com/undg/go-prapi) server
+
+#### Spin BE server
+
+```bash
+git clone https://github.com/undg/go-prapi
+cd go-prapi
+make run
+```
 
 ## Key Commands
 
@@ -37,15 +52,13 @@ Control Linux PC sound remotely from your phone.
 
 ## Deployment
 
-Build output to go-prapi's frontend/ folder. go-prapi serves WebSockets and static files. Symlink build folder to ../go-prapi/frontend/ or use local dev server with go-prapi running.
+Build output to [go-prapi's](https://github.com/undg/go-prapi) `/tmp/bin/pr-web/dist` folder.
+go-prapi have `make build/fe` and `make build/full` command's that will pull this repo with frontend code and wire it with the backend.
+go-prapi serves WebSockets and static files.
 
 ## Config
 
 Stored in localStorage. Jotai + Zod ensure valid values.
-
-## Contributing
-
-PRs welcome. Tests must pass.
 
 ## Code Quality
 
