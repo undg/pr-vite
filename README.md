@@ -53,7 +53,9 @@ make run
 ## Deployment
 
 Build output to [go-prapi's](https://github.com/undg/go-prapi) `/tmp/bin/pr-web/dist` folder.
+
 go-prapi have `make build/fe` and `make build/full` command's that will pull this repo with frontend code and wire it with the backend.
+
 go-prapi serves WebSockets and static files.
 
 ## Config
