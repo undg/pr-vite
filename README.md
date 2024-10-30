@@ -9,7 +9,7 @@ React frontend for [go-prapi](https://github.com/undg/go-prapi) (v0.2.0) websock
 
 Control Linux PC sound remotely from your phone.
 
-<img src="https://undg.dev/img/pr-web-ss.png" width="300" alt="pr-web screenshot">
+<img src="https://github.com/user-attachments/assets/e93fb159-08df-4c9c-ac92-19c3ea353489" width="300" alt="pr-web screenshot">
 
 ## Tech Stack
 
