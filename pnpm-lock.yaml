@@ -57,8 +57,8 @@ importers:
         specifier: 6.27.0
         version: 6.27.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-use-websocket:
-        specifier: 4.10.0
-        version: 4.10.0
+        specifier: 4.10.1
+        version: 4.10.1
       tailwind-merge:
         specifier: ^2.5.2
         version: 2.5.4
@@ -4150,8 +4150,8 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0
 
-  react-use-websocket@4.10.0:
-    resolution: {integrity: sha512-QJTbUjqkVj8Le5a/QpsXg7UMOLThdNKwGgc+SnHHh68RTbWcJ3tYC6ZpZnFDUOVsKXzeUSUUtqTXdT1IZOeWcA==}
+  react-use-websocket@4.10.1:
+    resolution: {integrity: sha512-PrZbKj3BSy9kRU9otKEoMi0FOcEVh1abyYxJDzB/oL7kMBDBs+ZXhnWWed/sc679nPHAWMOn1gotoV04j5gJUw==}
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -9408,7 +9408,7 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  react-use-websocket@4.10.0: {}
+  react-use-websocket@4.10.1: {}
 
   react@18.3.1:
     dependencies:
