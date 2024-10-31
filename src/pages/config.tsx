@@ -9,7 +9,7 @@ import { Input } from '../primitives/input'
 
 export const Config: FC = () => {
   const [config, updateConfig] = useConfig()
-  const { volStatus } = useVolumeStatus()
+  const { getStatus: volStatus } = useVolumeStatus()
 
   const handleChange = (type: keyof typeof config) => (e: React.ChangeEvent<HTMLInputElement>) => {
     updateConfig({ [type]: e.currentTarget.value })
