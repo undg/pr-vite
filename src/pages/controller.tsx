@@ -37,8 +37,8 @@ export const ControllerOutput: React.FC = () => {
             volume={output.volume}
             label={output.label}
             onMuteChange={handleSinkMuteToggle(output.name)}
-            onValueChange={volume => handleSinkVolumeChange(output.name, volume).updateVolStatus}
-            onValueCommit={volume => handleSinkVolumeChange(output.name, volume).sendMessage}
+            onValueChange={volume => handleSinkVolumeChange(output.name, volume).optimistic()}
+            onValueCommit={volume => handleSinkVolumeChange(output.name, volume).send()}
           >
             {vol.getStatus?.apps.map(
               app =>
@@ -52,8 +52,8 @@ export const ControllerOutput: React.FC = () => {
                       label={app.label}
                       volume={app.volume}
                       onMuteChange={handleSinkInputMuteToggle(app.id)}
-                      onValueChange={volume => handleSinkInputVolumeChange(app.id, volume).updateVolStatus}
-                      onValueCommit={volume => handleSinkInputVolumeChange(app.id, volume).sendMessage}
+                      onValueChange={volume => handleSinkInputVolumeChange(app.id, volume).optimistic()}
+                      onValueCommit={volume => handleSinkInputVolumeChange(app.id, volume).send()}
                     />
                   </Fragment>
                 ),

@@ -29,36 +29,50 @@ export const useVolumeStatus = () => {
   }, [lastMessage, updateVolStatus])
 
   const setSink = (name: string, volume: string) => {
-    updateVolStatus(draft => {
-      const sink = draft?.outputs.find(s => s.name === name)
-      if (sink) {
-        sink.volume = volume
-      }
-    })
+    function optimistic() {
+      updateVolStatus(draft => {
+        const sink = draft?.outputs.find(s => s.name === name)
+        if (sink) {
+          sink.volume = volume
+        }
+      })
+    }
 
-    sendMessage({
-      action: 'SetSinkVolume',
-      payload: { name, volume },
-    })
+    function send() {
+      sendMessage({
+        action: 'SetSinkVolume',
+        payload: { name, volume },
+      })
+    }
 
-    return { updateVolStatus, sendMessage }
+    return {
+      optimistic,
+      send,
+    }
   }
 
-  // Send SetSinkInputVolume message to websocket, when debouncedVolStatus changes
   const setSinkInput = (id: number, volume: string) => {
-    updateVolStatus(draft => {
-      const sink = draft?.apps.find(s => s.id === id)
-      if (sink) {
-        sink.id = id
-      }
-    })
+    function optimistic() {
+      updateVolStatus(draft => {
+        const sink = draft?.apps.find(s => s.id === id)
+        console.log(id)
+        if (sink) {
+          sink.volume = volume
+        }
+      })
+    }
 
-    sendMessage({
-      action: 'SetSinkInputVolume',
-      payload: { id, volume },
-    })
+    function send() {
+      sendMessage({
+        action: 'SetSinkInputVolume',
+        payload: { id, volume },
+      })
+    }
 
-    return { updateVolStatus, sendMessage }
+    return {
+      optimistic,
+      send,
+    }
   }
 
   const toggleSinkMute = (name: string) => {
