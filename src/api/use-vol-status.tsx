@@ -55,7 +55,6 @@ export const useVolumeStatus = () => {
     function optimistic() {
       updateVolStatus(draft => {
         const sink = draft?.apps.find(s => s.id === id)
-        console.log(id)
         if (sink) {
           sink.volume = volume
         }
