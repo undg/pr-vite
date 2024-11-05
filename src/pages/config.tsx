@@ -4,7 +4,7 @@ import { defaultConfig, useConfig } from '../config/use-config'
 import { dict } from '../constant'
 import { Button } from '../primitives/button'
 import { Input } from '../primitives/input'
-import { H3, P } from '../primitives/typography'
+import { H3 } from '../primitives/typography'
 import { ServerInfo } from './config/server-info'
 
 export const Config: FC = () => {
@@ -31,13 +31,12 @@ export const Config: FC = () => {
     <Layout header={dict.headerConfig}>
       <section>
         <H3>Config</H3>
-        <div className='flex justify-start'>
+        <div className='flex justify-start gap-2'>
           <Input label='hostname' value={config.hostname} onChange={handleChange('hostname')} />
           <Input label='port' className='w-16' value={config.port} onChange={handleChange('port')} />
           <Input label='endpoint' value={config.endpoint} onChange={handleChange('endpoint')} />
         </div>
-        <P>Full serverUrl: </P>
-        <Input disabled value={config.serverUrl} />
+        <Input label='Full serverUrl' disabled value={config.serverUrl} />
 
         <div className='mt-4 flex justify-between gap-4'>
           <Button variant='destructive' onClick={handleConfigReset}>
@@ -47,9 +46,21 @@ export const Config: FC = () => {
         </div>
       </section>
 
-      <section>
-        <Input label='Min volume' value={config.minVolume} type='number' onChange={handleChange('minVolume')} />
-        <Input label='Max volume' value={config.maxVolume} type='number' onChange={handleChange('maxVolume')} />
+      <section className='flex gap-2'>
+        <Input
+          label='Min volume'
+          onFocus={e => e.target.select()}
+          value={config.minVolume}
+          type='number'
+          onChange={handleChange('minVolume')}
+        />
+        <Input
+          label='Max volume'
+          onFocus={e => e.target.select()}
+          value={config.maxVolume}
+          type='number'
+          onChange={handleChange('maxVolume')}
+        />
       </section>
 
       <section>
