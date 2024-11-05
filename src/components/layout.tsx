@@ -1,8 +1,8 @@
 import type { FC, PropsWithChildren } from 'react'
-import { TopNav } from './top-nav'
-import { H1 } from '../primitives/typography'
 import { useTheme } from '../config/use-theme'
+import { H1 } from '../primitives/typography'
 import { cn } from '../utils/cn'
+import { TopNav } from './top-nav'
 
 export const Layout: FC<PropsWithChildren<{ header?: string }>> = props => {
   const [theme] = useTheme()

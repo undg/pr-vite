@@ -18,7 +18,7 @@
     "run-tsc": "tsc",
     "run-eslint": "eslint --cache --fix --ignore-path .gitignore --ext .ts,.tsx .",
     "run-stylelint": "stylelint --cache --fix --ignore-path .gitignore **/*.css",
-    "lint": "run-p run-tsc run-eslint run-stylelint",
+    "lint:fix": "run-p run-tsc run-eslint run-stylelint",
     "validate": "run-p lint test:ci test:e2e:headless"
   },
   "dependencies": {
@@ -75,6 +75,7 @@
     "eslint-plugin-react": "7.37.2",
     "eslint-plugin-react-hooks": "4.6.2",
     "eslint-plugin-testing-library": "6.4.0",
+    "eslint-plugin-unused-imports": "^4.1.4",
     "husky": "9.1.6",
     "jsdom": "25.0.1",
     "lint-staged": "15.2.10",

@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai'
+import { useAtomDevtools } from 'jotai-devtools'
 import { atomWithStorage } from 'jotai/utils'
 import type { Config } from './schema'
 import { ConfigSchema } from './schema'
-import { useAtomDevtools } from 'jotai-devtools'
 
 export const defaultConfig: Config = {
   hostname: window.location.hostname,

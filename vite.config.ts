@@ -1,9 +1,9 @@
 /// <reference types="vitest" />
+import path from 'node:path'
 import eslintPlugin from '@nabla/vite-plugin-eslint'
 import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 import { VitePWA } from 'vite-plugin-pwa'
-import path from 'node:path'
 
 export default defineConfig(({ mode }) => ({
   test: {
