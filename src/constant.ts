@@ -3,7 +3,7 @@ export const MIN_VOLUME = 0
  * Max volume 150 is 150%. Although you can set it as loud as you like,
  * value above 200 (200%) can damage your speakers.
  */
-export const MAX_VOLUME = 150
+export const MAX_VOLUME = 250
 
 export const APP_NAME = 'Pulse Remote'
 

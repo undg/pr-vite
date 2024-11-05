@@ -1,5 +1,5 @@
-import { theme as _theme } from 'tailwindcss/defaultConfig'
 import formsPlugin from '@tailwindcss/forms'
+import { theme as _theme } from 'tailwindcss/defaultConfig'
 
 /** @type {import('tailwindcss/types').Config} */
 const config = {
