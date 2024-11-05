@@ -6,7 +6,7 @@ export const ServerInfo: FC = () => {
   const { getStatus: volStatus } = useVolumeStatus()
 
   return (
-    <section>
+    <>
       <H3>Server info</H3>
       <div className='grid grid-cols-2 gap-2'>
         <div className='flex flex-col'>
@@ -34,6 +34,6 @@ export const ServerInfo: FC = () => {
           <Small>{volStatus?.buildInfo.compiler}</Small>
         </div>
       </div>
-    </section>
+    </>
   )
 }

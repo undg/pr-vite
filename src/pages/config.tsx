@@ -11,7 +11,9 @@ export const Config: FC = () => {
   const [config, updateConfig] = useConfig()
 
   const handleChange = (type: keyof typeof config) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateConfig({ [type]: e.currentTarget.value })
+    let value: string | number = e.currentTarget.value
+    if (type === 'maxVolume' || type === 'minVolume') value = Number(value)
+    updateConfig({ [type]: value })
   }
 
   const handleConfigDetect = () => {
@@ -36,6 +38,7 @@ export const Config: FC = () => {
         </div>
         <P>Full serverUrl: </P>
         <Input disabled value={config.serverUrl} />
+
         <div className='mt-4 flex justify-between gap-4'>
           <Button variant='destructive' onClick={handleConfigReset}>
             Reset to default
@@ -44,7 +47,14 @@ export const Config: FC = () => {
         </div>
       </section>
 
-      <ServerInfo />
+      <section>
+        <Input label='Min volume' value={config.minVolume} type='number' onChange={handleChange('minVolume')} />
+        <Input label='Max volume' value={config.maxVolume} type='number' onChange={handleChange('maxVolume')} />
+      </section>
+
+      <section>
+        <ServerInfo />
+      </section>
     </Layout>
   )
 }

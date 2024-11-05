@@ -9,6 +9,8 @@ export const defaultConfig: Config = {
   port: '8448',
   endpoint: '/api/v1/ws',
   serverUrl: `ws://${window.location.hostname}:8448/api/v1/ws`,
+  minVolume: 0,
+  maxVolume: 150,
 } as const
 
 export const configAtom = atomWithStorage<Config>('pr-web-config', defaultConfig)

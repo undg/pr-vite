@@ -10,6 +10,8 @@ describe('useConfig', () => {
       port: '8448',
       endpoint: '/api/v1/ws',
       serverUrl: 'ws://localhost:8448/api/v1/ws',
+      minVolume: 0,
+      maxVolume: 150,
     })
   })
 
@@ -30,6 +32,52 @@ describe('useConfig', () => {
       port: '9000',
       endpoint: '/api/v1/ws',
       serverUrl: 'ws://localhost:9000/api/v1/ws',
+      minVolume: 0,
+      maxVolume: 150,
+    })
+  })
+
+  test('update min max volume', async () => {
+    const { result, rerender } = renderHook(() => useConfig())
+
+    act(() => {
+      const [, updateConfig] = result.current
+      updateConfig({ minVolume: 69, maxVolume: 50 })
+    })
+
+    rerender()
+
+    const [updatedConfig] = result.current
+
+    expect(updatedConfig).to.eql({
+      hostname: 'localhost',
+      port: '9000',
+      endpoint: '/api/v1/ws',
+      serverUrl: 'ws://localhost:9000/api/v1/ws',
+      minVolume: 69,
+      maxVolume: 50,
+    })
+  })
+
+  test('falback min and max volume to defaults', async () => {
+    const { result, rerender } = renderHook(() => useConfig())
+
+    act(() => {
+      const [, updateConfig] = result.current
+      updateConfig({ minVolume: -666, maxVolume: 666 })
+    })
+
+    rerender()
+
+    const [updatedConfig] = result.current
+
+    expect(updatedConfig).to.eql({
+      hostname: 'localhost',
+      port: '9000',
+      endpoint: '/api/v1/ws',
+      serverUrl: 'ws://localhost:9000/api/v1/ws',
+      minVolume: 0,
+      maxVolume: 250,
     })
   })
 })
