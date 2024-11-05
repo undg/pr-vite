@@ -6,7 +6,7 @@
     "es2021": true
   },
   "parser": "@typescript-eslint/parser",
-  "plugins": ["eslint-comments"],
+  "plugins": ["eslint-comments", "unused-imports"],
   "extends": [
     "eslint:all",
     "plugin:@typescript-eslint/all",
@@ -30,8 +30,20 @@
     "grouped-accessor-pairs": "error",
     "no-constructor-return": "error",
     "no-implicit-coercion": "error",
+    "prefer-destructuring": "off",
     "prefer-regex-literals": "error",
     "capitalized-comments": "error",
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ],
     "no-restricted-syntax": [
       "error",
       {
@@ -63,6 +75,7 @@
     "@typescript-eslint/non-nullable-type-assertion-style": "off",
     "@typescript-eslint/padding-line-between-statements": "off",
     "@typescript-eslint/prefer-enum-initializers": "off",
+    "@typescript-eslint/prefer-destructuring": "off",
     "@typescript-eslint/prefer-includes": "off",
     "@typescript-eslint/prefer-readonly-parameter-types": "off",
     "@typescript-eslint/prefer-regexp-exec": "off",

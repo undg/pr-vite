@@ -1,18 +1,19 @@
 import type { FC } from 'react'
-import { useVolumeStatus } from '../api/use-vol-status'
-import { Button } from '../primitives/button'
 import { Layout } from '../components/layout'
-import { H3, Muted, P, Small } from '../primitives/typography'
 import { defaultConfig, useConfig } from '../config/use-config'
 import { dict } from '../constant'
+import { Button } from '../primitives/button'
 import { Input } from '../primitives/input'
+import { H3 } from '../primitives/typography'
+import { ServerInfo } from './config/server-info'
 
 export const Config: FC = () => {
   const [config, updateConfig] = useConfig()
-  const { volStatus } = useVolumeStatus()
 
   const handleChange = (type: keyof typeof config) => (e: React.ChangeEvent<HTMLInputElement>) => {
-    updateConfig({ [type]: e.currentTarget.value })
+    let value: string | number = e.currentTarget.value
+    if (type === 'maxVolume' || type === 'minVolume') value = Number(value)
+    updateConfig({ [type]: value })
   }
 
   const handleConfigDetect = () => {
@@ -30,13 +31,13 @@ export const Config: FC = () => {
     <Layout header={dict.headerConfig}>
       <section>
         <H3>Config</H3>
-        <div className='flex justify-start'>
+        <div className='flex justify-start gap-2'>
           <Input label='hostname' value={config.hostname} onChange={handleChange('hostname')} />
           <Input label='port' className='w-16' value={config.port} onChange={handleChange('port')} />
           <Input label='endpoint' value={config.endpoint} onChange={handleChange('endpoint')} />
         </div>
-        <P>Full serverUrl: </P>
-        <Input disabled value={config.serverUrl} />
+        <Input label='Full serverUrl' disabled value={config.serverUrl} />
+
         <div className='mt-4 flex justify-between gap-4'>
           <Button variant='destructive' onClick={handleConfigReset}>
             Reset to default
@@ -44,34 +45,26 @@ export const Config: FC = () => {
           <Button onClick={handleConfigDetect}>Auto detect</Button>
         </div>
       </section>
+
+      <section className='flex gap-2'>
+        <Input
+          label='Min volume'
+          onFocus={e => e.target.select()}
+          value={config.minVolume}
+          type='number'
+          onChange={handleChange('minVolume')}
+        />
+        <Input
+          label='Max volume'
+          onFocus={e => e.target.select()}
+          value={config.maxVolume}
+          type='number'
+          onChange={handleChange('maxVolume')}
+        />
+      </section>
+
       <section>
-        <H3>Server info</H3>
-        <div className='grid grid-cols-2 gap-2'>
-          <div className='flex flex-col'>
-            <Muted>Version</Muted>
-            <Small>{volStatus?.buildInfo.gitVersion}</Small>
-          </div>
-          <div className='flex flex-col'>
-            <Muted>Commit SHA</Muted>
-            <Small>{volStatus?.buildInfo.gitCommit}</Small>
-          </div>
-          <div className='flex flex-col'>
-            <Muted>Platform</Muted>
-            <Small>{volStatus?.buildInfo.platform}</Small>
-          </div>
-          <div className='flex flex-col'>
-            <Muted>Build Date</Muted>
-            <Small>{volStatus?.buildInfo.buildDate}</Small>
-          </div>
-          <div className='flex flex-col'>
-            <Muted>Go Version</Muted>
-            <Small>{volStatus?.buildInfo.goVersion}</Small>
-          </div>
-          <div className='flex flex-col'>
-            <Muted>Compiler</Muted>
-            <Small>{volStatus?.buildInfo.compiler}</Small>
-          </div>
-        </div>
+        <ServerInfo />
       </section>
     </Layout>
   )
