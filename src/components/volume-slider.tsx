@@ -1,9 +1,11 @@
-import { Volume, VolumeOff } from 'lucide-react'
-import { MAX_VOLUME, MIN_VOLUME, testid } from '../constant'
-import { cn } from '../utils/cn'
+import { MinusCircleIcon, PlusCircleIcon, Volume, VolumeOff } from 'lucide-react'
+import { testid } from '../constant'
+import { Button } from '../primitives/button'
 import { Slider } from '../primitives/slider'
 import { Toggle } from '../primitives/toggle'
 import { Small } from '../primitives/typography'
+import { cn } from '../utils/cn'
+import { useConfig } from '../config/use-config'
 
 export const VolumeSlider: React.FC<{
   children?: React.ReactNode
@@ -15,6 +17,30 @@ export const VolumeSlider: React.FC<{
   onValueChange?: (value: number[]) => void
   onValueCommit?: (value: number[]) => void
 }> = props => {
+  const [config] = useConfig()
+  const handleVolumeDown = () => {
+    const volume = Number(props.volume)
+    if (volume === config.minVolume) {
+      return
+    }
+
+    const newVolume = volume < 10 ? config.minVolume : volume - 10
+
+    props.onValueChange?.([newVolume])
+    props.onValueCommit?.([newVolume])
+  }
+
+  const handleVolumeUp = () => {
+    const volume = Number(props.volume)
+    if (volume === config.maxVolume) {
+      return
+    }
+
+    const newVolume = volume > 140 ? config.maxVolume : volume + 10
+
+    props.onValueChange?.([newVolume])
+    props.onValueCommit?.([newVolume])
+  }
   return (
     <div
       className={cn('grid items-center gap-x-4 gap-y-0', props.className)}
@@ -39,17 +65,25 @@ export const VolumeSlider: React.FC<{
       >
         {props.volume}%
       </div>
-      <Slider
-        className='top-2 col-span-1 mb-4'
-        name={props.label}
-        title={props.label}
-        min={MIN_VOLUME}
-        max={MAX_VOLUME}
-        value={[Number(props.volume)]}
-        step={1}
-        onValueChange={props.onValueChange}
-        onValueCommit={props.onValueCommit}
-      />
+      <div className='flex'>
+        <Button variant={`ghost`} onClick={handleVolumeDown}>
+          <MinusCircleIcon />
+        </Button>
+        <Slider
+          className='top-2 col-span-1 mb-4'
+          name={props.label}
+          title={props.label}
+          min={config.minVolume}
+          max={config.maxVolume}
+          value={[Number(props.volume)]}
+          step={1}
+          onValueChange={props.onValueChange}
+          onValueCommit={props.onValueCommit}
+        />
+        <Button variant={`ghost`} onClick={handleVolumeUp}>
+          <PlusCircleIcon />
+        </Button>
+      </div>
       {props.children}
     </div>
   )

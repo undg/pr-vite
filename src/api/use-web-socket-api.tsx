@@ -22,6 +22,9 @@ export const useWebSocketApi = () => {
     lastMessage,
     readyState,
     sendMessage: sendMessageWs,
+    lastJsonMessage,
+    sendJsonMessage,
+    getWebSocket,
   } = useWebSocket(config.serverUrl, {
     shouldReconnect: () => true,
     reconnectInterval: 1000,
@@ -39,5 +42,5 @@ export const useWebSocketApi = () => {
 
   const sendMessage = useCallback((message: Message) => sendMessageWs(JSON.stringify(message)), [sendMessageWs])
 
-  return { messageHistory, sendMessage, status, lastMessage }
+  return { messageHistory, sendMessage, sendJsonMessage, status, getWebSocket, lastMessage, lastJsonMessage }
 }
