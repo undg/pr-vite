@@ -16,7 +16,7 @@ const gitignorePath = path.resolve(__dirname, '.gitignore')
 export default [
   includeIgnoreFile(gitignorePath),
   {
-    files: ['*.ts', '.tsx'],
+    files: ['src/**/*.ts', 'src/**/*.tsx'],
     languageOptions: {
       ecmaVersion: 2021,
       sourceType: 'module',
