@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import { Layout } from '../components/layout'
 import { defaultConfig, useConfig } from '../config/use-config'
-import { dict } from '../constant'
+import { dict, testid } from '../constant'
 import { Button } from '../primitives/button'
 import { Input } from '../primitives/input'
 import { H3 } from '../primitives/typography'
@@ -32,22 +32,41 @@ export const Config: FC = () => {
       <section>
         <H3>Config</H3>
         <div className='flex justify-start gap-2'>
-          <Input label='hostname' value={config.hostname} onChange={handleChange('hostname')} />
-          <Input label='port' className='w-16' value={config.port} onChange={handleChange('port')} />
-          <Input label='endpoint' value={config.endpoint} onChange={handleChange('endpoint')} />
+          <Input
+            data-testid={testid.inputHostname}
+            label='hostname'
+            value={config.hostname}
+            onChange={handleChange('hostname')}
+          />
+          <Input
+            data-testid={testid.inputPort}
+            label='port'
+            className='w-16'
+            value={config.port}
+            onChange={handleChange('port')}
+          />
+          <Input
+            data-testid={testid.inputEndpoint}
+            label='endpoint'
+            value={config.endpoint}
+            onChange={handleChange('endpoint')}
+          />
         </div>
-        <Input label='Full serverUrl' disabled value={config.serverUrl} />
+        <Input data-testid={testid.inputFullUrl} label='Full serverUrl' disabled value={config.serverUrl} />
 
         <div className='mt-4 flex justify-between gap-4'>
-          <Button variant='destructive' onClick={handleConfigReset}>
+          <Button data-testid={testid.btnReset} variant='destructive' onClick={handleConfigReset}>
             Reset to default
           </Button>
-          <Button onClick={handleConfigDetect}>Auto detect</Button>
+          <Button data-testid={testid.btnDetect} onClick={handleConfigDetect}>
+            Auto detect
+          </Button>
         </div>
       </section>
 
       <section className='flex gap-2'>
         <Input
+          data-testid={testid.inputMinVolume}
           label='Min volume'
           onFocus={e => e.target.select()}
           value={config.minVolume}
@@ -55,6 +74,7 @@ export const Config: FC = () => {
           onChange={handleChange('minVolume')}
         />
         <Input
+          data-testid={testid.inputMaxVolume}
           label='Max volume'
           onFocus={e => e.target.select()}
           value={config.maxVolume}

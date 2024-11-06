@@ -1,5 +1,6 @@
-import { act, renderHook } from '@testing-library/react-hooks'
+import { renderHook } from '@testing-library/react-hooks'
 import { useConfig } from './use-config'
+import { act } from 'react'
 
 describe('useConfig', () => {
   test('initial config with defaults', () => {

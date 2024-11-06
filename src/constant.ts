@@ -27,4 +27,12 @@ export const testid = {
   btnTheme: 'btn-theme',
   btnMuteToggle: 'btn-mute-toggle',
   loadingOrError: 'loading-or-error',
+  inputMinVolume: 'input-min-volume',
+  inputMaxVolume: 'input-max-volume',
+  inputHostname: 'input-hostname',
+  inputPort: 'input-port',
+  inputEndpoint: 'input-endpoint',
+  inputFullUrl: 'input-full-url',
+  btnReset: 'input-reset',
+  btnDetect: 'input-detect',
 } as const
