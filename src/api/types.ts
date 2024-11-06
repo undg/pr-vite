@@ -1,26 +1,26 @@
 // @TODO (undg) 2024-09-19: generate those types on the BE or generate them from GetSchema API provided by the server.
 
 type ActionIn = 'GetStatus' | 'GetSinks' | 'GetCards' | 'GetSchema' | 'GetBuildInfo' | 'GetOutputs'
-// and more
+// And more
 
 type Outputs = {
-  /** uniq device index */
+  /** Uniq device index */
   id: number
-  /** uniq name, can be used as ID */
+  /** Uniq name, can be used as ID */
   name: string
   label: string
-  /** volume is a number string, percent */
+  /** Volume is a number string, percent */
   volume: string
   muted: boolean
 }
 
 type Apps = {
-  /** uniq app index */
+  /** Uniq app index */
   id: number
-  /** uniq Outputs.id that can be used to corelate app with output */
+  /** Uniq Outputs.id that can be used to corelate app with output */
   outputId: number
   label: string
-  /** volume is a number string, percent */
+  /** Volume is a number string, percent */
   volume: string
   muted: boolean
 }
@@ -42,10 +42,10 @@ export type VolStatus = {
 }
 
 export type GetSinks = {
-  /** uniq name, can be used as ID */
+  /** Uniq name, can be used as ID */
   name: string
   label: string
-  /** volume is a number string */
+  /** Volume is a number string */
   volume: string
   muted: boolean
 }

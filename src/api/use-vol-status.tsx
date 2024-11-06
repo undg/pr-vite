@@ -20,7 +20,7 @@ export const useVolumeStatus = () => {
     if (lastMessage && typeof lastMessage.data === 'string') {
       const incomeMessage = JSON.parse(lastMessage.data) as GetWsMessage
       updateVolStatus(draft => {
-        if (incomeMessage.action === 'GetStatus' && !!incomeMessage.payload) {
+        if (incomeMessage.action === 'GetStatus' && Boolean(incomeMessage.payload)) {
           return incomeMessage.payload
         }
         return draft

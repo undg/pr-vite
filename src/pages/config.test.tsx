@@ -4,7 +4,7 @@ import { Config } from './config'
 import { testid } from '../constant'
 
 describe(`<Config /> route`, () => {
-  // setup router context
+  // Setup router context
   const renderWithRouter = (ui: React.ReactElement) => {
     return render(<BrowserRouter>{ui}</BrowserRouter>)
   }
@@ -24,17 +24,17 @@ describe(`<Config /> route`, () => {
       const detectBtn = screen.getByTestId(testid.btnDetect)
       const resetBtn = screen.getByTestId(testid.btnReset)
 
-      // change all fields
+      // Change all fields
       fireEvent.change(hostname, { target: { value: 'new-host' } })
       fireEvent.change(port, { target: { value: 69 } })
       fireEvent.change(endpoint, { target: { value: '/new-endpoint' } })
       expect(fullUrl).toHaveValue('ws://new-host:69/new-endpoint')
 
-      // reset to defaults
+      // Reset to defaults
       fireEvent.click(resetBtn)
       expect(fullUrl).toHaveValue('ws://localhost:8448/api/v1/ws')
 
-      // detect server
+      // Detect server
       fireEvent.click(detectBtn)
       expect(fullUrl).toHaveValue('ws://localhost:3000/api/v1/ws')
     })
