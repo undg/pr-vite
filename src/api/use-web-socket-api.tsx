@@ -4,43 +4,43 @@ import { useConfig } from '../config/use-config'
 import type { Message } from './types'
 
 const connectionStatus = {
-  [ReadyState.CONNECTING]: 'Connecting',
-  [ReadyState.OPEN]: 'Open',
-  [ReadyState.CLOSING]: 'Closing',
-  [ReadyState.CLOSED]: 'Closed',
-  [ReadyState.UNINSTANTIATED]: 'Uninstantiated',
+	[ReadyState.CONNECTING]: 'Connecting',
+	[ReadyState.OPEN]: 'Open',
+	[ReadyState.CLOSING]: 'Closing',
+	[ReadyState.CLOSED]: 'Closed',
+	[ReadyState.UNINSTANTIATED]: 'Uninstantiated',
 } as const
 
 type ConnectionStatus = (typeof connectionStatus)[keyof typeof connectionStatus]
 
 export const useWebSocketApi = () => {
-  const [messageHistory, setMessageHistory] = useState<MessageEvent[]>([])
-  const [status, setStatus] = useState<ConnectionStatus>('Closed')
-  const [config] = useConfig()
+	const [messageHistory, setMessageHistory] = useState<MessageEvent[]>([])
+	const [status, setStatus] = useState<ConnectionStatus>('Closed')
+	const [config] = useConfig()
 
-  const {
-    lastMessage,
-    readyState,
-    sendMessage: sendMessageWs,
-    lastJsonMessage,
-    sendJsonMessage,
-    getWebSocket,
-  } = useWebSocket(config.serverUrl, {
-    shouldReconnect: () => true,
-    reconnectInterval: 1000,
-  })
+	const {
+		lastMessage,
+		readyState,
+		sendMessage: sendMessageWs,
+		lastJsonMessage,
+		sendJsonMessage,
+		getWebSocket,
+	} = useWebSocket(config.serverUrl, {
+		shouldReconnect: () => true,
+		reconnectInterval: 1000,
+	})
 
-  useEffect(() => {
-    if (lastMessage) {
-      setMessageHistory(prev => [...prev, lastMessage])
-    }
-  }, [lastMessage])
+	useEffect(() => {
+		if (lastMessage) {
+			setMessageHistory(prev => [...prev, lastMessage])
+		}
+	}, [lastMessage])
 
-  useEffect(() => {
-    setStatus(connectionStatus[readyState])
-  }, [readyState])
+	useEffect(() => {
+		setStatus(connectionStatus[readyState])
+	}, [readyState])
 
-  const sendMessage = useCallback((message: Message) => sendMessageWs(JSON.stringify(message)), [sendMessageWs])
+	const sendMessage = useCallback((message: Message) => sendMessageWs(JSON.stringify(message)), [sendMessageWs])
 
-  return { messageHistory, sendMessage, sendJsonMessage, status, getWebSocket, lastMessage, lastJsonMessage }
+	return { messageHistory, sendMessage, sendJsonMessage, status, getWebSocket, lastMessage, lastJsonMessage }
 }

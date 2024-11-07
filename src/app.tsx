@@ -7,16 +7,16 @@ import { Config } from './pages/config'
 import { ControllerInput, ControllerOutput } from './pages/controller'
 
 export default function App(): ReactElement {
-  return (
-    <BrowserRouter>
-      <Suspense fallback={<LoadingOrError />}>
-        <Routes>
-          <Route path='/' element={<ControllerOutput />} />
-          <Route path='/input' element={<ControllerInput />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/config' element={<Config />} />
-        </Routes>
-      </Suspense>
-    </BrowserRouter>
-  )
+	return (
+		<BrowserRouter>
+			<Suspense fallback={<LoadingOrError />}>
+				<Routes>
+					<Route path='/' element={<ControllerOutput />} />
+					<Route path='/input' element={<ControllerInput />} />
+					<Route path='/about' element={<About />} />
+					<Route path='/config' element={<Config />} />
+				</Routes>
+			</Suspense>
+		</BrowserRouter>
+	)
 }
