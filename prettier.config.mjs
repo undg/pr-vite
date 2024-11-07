@@ -14,9 +14,6 @@ const config = {
 	semi: false,
 	singleQuote: true,
 	trailingComma: 'all',
-	// printWidth: 120, // readed from .editorconfig
-	// useTabs: true, // readed from .editorconfig
-	// tabWidth: 2, // readed from .editorconfig
 }
 
 export default config

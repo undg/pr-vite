@@ -5,29 +5,29 @@ import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
 
 export default defineConfig(({ mode }) => ({
-  test: {
-    css: false,
-    include: ['**/*.test.{ts,tsx}'],
-    globals: true,
-    environment: 'jsdom',
-    setupFiles: 'src/setup-tests.ts',
-    clearMocks: true,
-    coverage: {
-      include: ['src/**/*'],
-      exclude: ['src/main.tsx'],
-      thresholds: {
-        '100': false,
-      },
-      provider: 'istanbul',
-      enabled: true,
-      reporter: ['text', 'lcov'],
-      reportsDirectory: 'coverage',
-    },
-  },
-  resolve: {
-    alias: {
-      '@': path.resolve(new URL('src', import.meta.url).toString()),
-    },
-  },
-  plugins: [react(), ...(mode === 'test' ? [] : [eslintPlugin()])],
+	test: {
+		css: false,
+		include: ['**/*.test.{ts,tsx}'],
+		globals: true,
+		environment: 'jsdom',
+		setupFiles: 'src/setup-tests.ts',
+		clearMocks: true,
+		coverage: {
+			include: ['src/**/*'],
+			exclude: ['src/main.tsx'],
+			thresholds: {
+				'100': false,
+			},
+			provider: 'istanbul',
+			enabled: true,
+			reporter: ['text', 'lcov'],
+			reportsDirectory: 'coverage',
+		},
+	},
+	resolve: {
+		alias: {
+			'@': path.resolve(new URL('src', import.meta.url).toString()),
+		},
+	},
+	plugins: [react(), ...(mode === 'test' ? [] : [eslintPlugin()])],
 }))
