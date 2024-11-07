@@ -11,27 +11,27 @@ export const ServerInfo: FC = () => {
 			<div className='grid grid-cols-2 gap-2'>
 				<div className='flex flex-col'>
 					<Muted>Version</Muted>
-					<Small>{volStatus?.buildInfo.gitVersion}</Small>
+					<Small>{volStatus?.buildInfo?.gitVersion}</Small>
 				</div>
 				<div className='flex flex-col'>
 					<Muted>Commit SHA</Muted>
-					<Small>{volStatus?.buildInfo.gitCommit}</Small>
+					<Small>{volStatus?.buildInfo?.gitCommit}</Small>
 				</div>
 				<div className='flex flex-col'>
 					<Muted>Platform</Muted>
-					<Small>{volStatus?.buildInfo.platform}</Small>
+					<Small>{volStatus?.buildInfo?.platform}</Small>
 				</div>
 				<div className='flex flex-col'>
 					<Muted>Build Date</Muted>
-					<Small>{volStatus?.buildInfo.buildDate}</Small>
+					<Small>{volStatus?.buildInfo?.buildDate}</Small>
 				</div>
 				<div className='flex flex-col'>
 					<Muted>Go Version</Muted>
-					<Small>{volStatus?.buildInfo.goVersion}</Small>
+					<Small>{volStatus?.buildInfo?.goVersion}</Small>
 				</div>
 				<div className='flex flex-col'>
 					<Muted>Compiler</Muted>
-					<Small>{volStatus?.buildInfo.compiler}</Small>
+					<Small>{volStatus?.buildInfo?.compiler}</Small>
 				</div>
 			</div>
 		</>

@@ -31,7 +31,7 @@ export const useVolumeStatus = () => {
 	const setSink = (name: string, volume: string) => {
 		function optimistic() {
 			updateVolStatus(draft => {
-				const sink = draft?.outputs.find(s => s.name === name)
+				const sink = draft?.outputs?.find(s => s.name === name)
 				if (sink) {
 					sink.volume = volume
 				}
@@ -54,7 +54,7 @@ export const useVolumeStatus = () => {
 	const setSinkInput = (id: number, volume: string) => {
 		function optimistic() {
 			updateVolStatus(draft => {
-				const sink = draft?.apps.find(s => s.id === id)
+				const sink = draft?.apps?.find(s => s.id === id)
 				if (sink) {
 					sink.volume = volume
 				}
@@ -76,7 +76,7 @@ export const useVolumeStatus = () => {
 
 	const toggleSinkMute = (name: string) => {
 		updateVolStatus(draft => {
-			const sink = draft?.outputs.find(s => s.name === name)
+			const sink = draft?.outputs?.find(s => s.name === name)
 			if (sink) {
 				sink.muted = !sink.muted
 			}
@@ -84,14 +84,14 @@ export const useVolumeStatus = () => {
 
 		sendMessage({
 			action: 'SetSinkMuted',
-			payload: { name, muted: !volStatus?.outputs.find(s => s.name === name)?.muted },
+			payload: { name, muted: !volStatus?.outputs?.find(s => s.name === name)?.muted },
 		})
 	}
 
 	const toggleSinkInputMute = (id: number) => {
 		sendMessage({
 			action: 'SetSinkInputMuted',
-			payload: { id, muted: !volStatus?.apps.find(s => s.id === id)?.muted },
+			payload: { id, muted: !volStatus?.apps?.find(s => s.id === id)?.muted },
 		})
 	}
 

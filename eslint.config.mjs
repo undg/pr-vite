@@ -50,7 +50,7 @@ export default [
 			'no-implicit-coercion': 'error',
 			'prefer-destructuring': 'off',
 			'prefer-regex-literals': 'error',
-			'capitalized-comments': 'error',
+			'capitalized-comments': 'off',
 			'no-unused-vars': 'off',
 			'unused-imports/no-unused-imports': 'error',
 			'unused-imports/no-unused-vars': [

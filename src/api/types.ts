@@ -14,6 +14,17 @@ type Outputs = {
 	muted: boolean
 }
 
+type Sources = {
+	/** Uniq device index */
+	id: number
+	/** Uniq name, can be used as ID */
+	name: string
+	label: string
+	/** Volume is a number string, percent */
+	volume: string
+	muted: boolean
+}
+
 type Apps = {
 	/** Uniq app index */
 	id: number
@@ -35,10 +46,11 @@ type BuildInfo = {
 }
 
 export type VolStatus = {
-	outputs: Outputs[]
-	apps: Apps[]
+	outputs?: Outputs[]
+	apps?: Apps[]
+	sources?: Sources[]
 	/** Backend server metadata */
-	buildInfo: BuildInfo
+	buildInfo?: BuildInfo
 }
 
 export type GetSinks = {
