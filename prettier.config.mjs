@@ -5,18 +5,18 @@
  * @type {import("prettier").Config}
  */
 const config = {
-  arrowParens: 'avoid',
-  bracketSameLine: false,
-  bracketSpacing: true,
-  jsxSingleQuote: true,
-  plugins: ['prettier-plugin-tailwindcss'],
-  printWidth: 120,
-  quoteProps: 'as-needed',
-  semi: false,
-  singleQuote: true,
-  tabWidth: 2,
-  trailingComma: 'all',
-  useTabs: false,
+	arrowParens: 'avoid',
+	bracketSameLine: false,
+	bracketSpacing: true,
+	jsxSingleQuote: true,
+	plugins: ['prettier-plugin-tailwindcss'],
+	quoteProps: 'as-needed',
+	semi: false,
+	singleQuote: true,
+	trailingComma: 'all',
+	// printWidth: 120, // readed from .editorconfig
+	// useTabs: true, // readed from .editorconfig
+	// tabWidth: 2, // readed from .editorconfig
 }
 
 export default config
