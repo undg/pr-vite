@@ -14,7 +14,7 @@ type Outputs = {
 	muted: boolean
 }
 
-type Inputs = {
+type Sources = {
 	/** Uniq device index */
 	id: number
 	/** Uniq name, can be used as ID */
@@ -48,7 +48,7 @@ type BuildInfo = {
 export type VolStatus = {
 	outputs?: Outputs[]
 	apps?: Apps[]
-	sources?: Inputs[]
+	sources?: Sources[]
 	/** Backend server metadata */
 	buildInfo?: BuildInfo
 }
