@@ -1,11 +1,12 @@
 import type { FC } from 'react'
 import { Layout } from '../components/layout'
 import { defaultConfig, useConfig } from '../config/use-config'
-import { dict, testid } from '../constant'
+import { testid } from '../constant'
 import { Button } from '../primitives/button'
 import { Input } from '../primitives/input'
 import { H3 } from '../primitives/typography'
 import { ServerInfo } from './config/server-info'
+import { dict } from '../dict'
 
 export const Config: FC = () => {
 	const [config, updateConfig] = useConfig()

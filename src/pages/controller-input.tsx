@@ -1,7 +1,7 @@
 import { useVolumeStatus } from '../api/use-vol-status'
 import { Layout } from '../components/layout'
 import { VolumeSlider } from '../components/volume-slider'
-import { dict } from '../constant'
+import { dict } from '../dict'
 
 export const ControllerInput: React.FC = () => {
 	const vol = useVolumeStatus()
@@ -17,7 +17,7 @@ export const ControllerInput: React.FC = () => {
 	}
 
 	return (
-		<Layout header={dict.headerOutput}>
+		<Layout header={dict.headerInput}>
 			<section className='flex flex-col gap-6 text-xl'>
 				{vol.getStatus?.sources?.map(source => (
 					<VolumeSlider

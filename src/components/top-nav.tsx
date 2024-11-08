@@ -13,7 +13,7 @@ export const TopNav: FC = () => {
 	}
 
 	return (
-		<nav className='mb-8 flex justify-between gap-4'>
+		<nav className='mb-8 flex flex-wrap-reverse justify-between gap-4'>
 			<div className='flex justify-between gap-4'>
 				<Link to='/' data-testid={testid.gotoOutputDevices}>
 					<Button variant='outline'>

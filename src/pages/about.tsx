@@ -1,6 +1,6 @@
 import type { ReactElement } from 'react'
 import { Layout } from '../components/layout'
-import { dict } from '../constant'
+import { dict } from '../dict'
 import { H2, P } from '../primitives/typography'
 
 export default function About(): ReactElement {

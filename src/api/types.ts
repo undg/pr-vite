@@ -1,78 +1,20 @@
-// @TODO (undg) 2024-09-19: generate those types on the BE or generate them from GetSchema API provided by the server.
+import { PrapiStatus } from '../generated/status'
 
+// @TODO (undg) 2024-09-19: generate those types on the BE or generate them from GetSchema API provided by the server.
 type ActionIn = 'GetStatus' | 'GetSinks' | 'GetCards' | 'GetSchema' | 'GetBuildInfo' | 'GetOutputs'
 // And more
-
-type Outputs = {
-	/** Uniq device index */
-	id: number
-	/** Uniq name, can be used as ID */
-	name: string
-	label: string
-	/** Volume is a number string, percent */
-	volume: string
-	muted: boolean
-}
-
-type Sources = {
-	/** Uniq device index */
-	id: number
-	/** Uniq name, can be used as ID */
-	name: string
-	label: string
-	/** Volume is a number string, percent */
-	volume: string
-	muted: boolean
-}
-
-type Apps = {
-	/** Uniq app index */
-	id: number
-	/** Uniq Outputs.id that can be used to corelate app with output */
-	outputId: number
-	label: string
-	/** Volume is a number string, percent */
-	volume: string
-	muted: boolean
-}
-
-type BuildInfo = {
-	gitVersion: string
-	gitCommit: string
-	buildDate: string
-	goVersion: string
-	compiler: string
-	platform: string
-}
-
-export type VolStatus = {
-	outputs?: Outputs[]
-	apps?: Apps[]
-	sources?: Sources[]
-	/** Backend server metadata */
-	buildInfo?: BuildInfo
-}
-
-export type GetSinks = {
-	/** Uniq name, can be used as ID */
-	name: string
-	label: string
-	/** Volume is a number string */
-	volume: string
-	muted: boolean
-}
 
 export type GetWsMessage = {
 	action: ActionIn
 	status: number // 400x
-	payload?: VolStatus
+	payload?: PrapiStatus
 	error?: string
 }
 
 export type Message =
 	| {
 			action: 'SetSinkVolume'
-			payload: { name: string; volume: string }
+			payload: { name: string; volume: number }
 	  }
 	| {
 			action: 'SetSinkMuted'
@@ -80,7 +22,7 @@ export type Message =
 	  }
 	| {
 			action: 'SetSinkInputVolume'
-			payload: { id: number; volume: string }
+			payload: { id: number; volume: number }
 	  }
 	| {
 			action: 'SetSinkInputMuted'
