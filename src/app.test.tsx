@@ -1,8 +1,9 @@
 import { screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import App from './app'
-import { dict, testid } from './constant'
+import { testid } from './constant'
 import { renderWithProviders } from './test-utils'
+import { dict } from './dict'
 
 describe('<App />', () => {
 	beforeEach(() => {

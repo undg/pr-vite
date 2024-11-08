@@ -2,7 +2,7 @@ import { Fragment } from 'react'
 import { useVolumeStatus } from '../api/use-vol-status'
 import { Layout } from '../components/layout'
 import { VolumeSlider } from '../components/volume-slider'
-import { dict } from '../constant'
+import { dict } from '../dict'
 
 export const ControllerOutput: React.FC = () => {
 	const vol = useVolumeStatus()
@@ -45,7 +45,7 @@ export const ControllerOutput: React.FC = () => {
 								app.outputId === output.id && (
 									<Fragment key={app.id}>
 										<div className='relative ml-4 flex h-full items-end justify-end'>
-											<span className='absolute bottom-1 h-full w-full border border-b-foreground border-l-foreground' />
+											<span className='absolute bottom-1 h-full w-full border-2 border-r-0 border-t-0 border-b-foreground border-l-foreground' />
 										</div>
 										<VolumeSlider
 											muted={app.muted}
