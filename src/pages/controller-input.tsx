@@ -1,7 +1,7 @@
 import { useVolumeStatus } from '../api/use-vol-status'
 import { Layout } from '../components/layout'
 import { VolumeSlider } from '../components/volume-slider'
-import { dict } from '../constant'
+import { dict } from '../dict'
 
 export const ControllerInput: React.FC = () => {
 	const vol = useVolumeStatus()
