@@ -2,10 +2,11 @@ import { atom } from 'jotai'
 import { useAtomDevtools } from 'jotai-devtools'
 import { useImmerAtom } from 'jotai-immer'
 import { useEffect } from 'react'
-import type { GetWsMessage, VolStatus } from './types'
+import type { GetWsMessage } from './types'
 import { useWebSocketApi } from './use-web-socket-api'
+import { PrapiStatus } from '../generated/status'
 
-export const volStatusAtom = atom<VolStatus>()
+export const volStatusAtom = atom<PrapiStatus>()
 if (process.env.NODE_ENV !== 'production') {
 	volStatusAtom.debugLabel = 'statusAtom'
 }
@@ -28,7 +29,7 @@ export const useVolumeStatus = () => {
 		}
 	}, [lastMessage, updateVolStatus])
 
-	const setSink = (name: string, volume: string) => {
+	const setSink = (name: string, volume: number) => {
 		function optimistic() {
 			updateVolStatus(draft => {
 				const sink = draft?.outputs?.find(s => s.name === name)
@@ -51,7 +52,7 @@ export const useVolumeStatus = () => {
 		}
 	}
 
-	const setSinkInput = (id: number, volume: string) => {
+	const setSinkInput = (id: number, volume: number) => {
 		function optimistic() {
 			updateVolStatus(draft => {
 				const sink = draft?.apps?.find(s => s.id === id)

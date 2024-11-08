@@ -9,7 +9,7 @@ export const ControllerOutput: React.FC = () => {
 
 	const handleSinkVolumeChange = (name: string, [volume]: number[]) => {
 		navigator.vibrate([10])
-		return vol.setSink(name, volume.toString())
+		return vol.setSink(name, volume)
 	}
 
 	const handleSinkMuteToggle = (name: string) => () => {
@@ -19,7 +19,7 @@ export const ControllerOutput: React.FC = () => {
 
 	const handleSinkInputVolumeChange = (id: number, [volume]: number[]) => {
 		navigator.vibrate([10])
-		return vol.setSinkInput(id, volume.toString())
+		return vol.setSinkInput(id, volume)
 	}
 
 	const handleSinkInputMuteToggle = (id: number) => () => {
