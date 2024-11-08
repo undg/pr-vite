@@ -5,7 +5,7 @@
   "version": "0.0.1",
   "scripts": {
     "build": "vite build",
-    "dev": "vite --open",
+    "dev": "vite",
     "prepare": "husky install",
     "preview": "vite preview",
     "preview:test": "start-server-and-test preview http://localhost:4173",
@@ -19,9 +19,15 @@
     "lint:tsc": "tsc",
     "lint:eslint": "eslint --cache --fix .",
     "lint:stylelint": "stylelint --cache --fix --ignore-path .gitignore **/*.css",
-    "types-gen": "run-s types-gen:fetch types-gen:make",
-    "types-gen:fetch": "curl 'http://localhost:8448/api/v1/schema/status' > /tmp/pr-web-status-schema.json",
-    "types-gen:make": "npx quicktype -s schema /tmp/pr-web-status-schema.json -o src/generated/status.ts --just-types --top-level PrapiStatus",
+    "types-gen": "run-s types-fetch types-make",
+    "types-fetch": "run-p types-fetch:*",
+    "types-fetch:status": "curl 'http://localhost:8448/api/v1/schema/status' > /tmp/pr-web-status-schema.json",
+    "types-fetch:message": "curl 'http://localhost:8448/api/v1/schema/message' > /tmp/pr-web-message-schema.json",
+    "types-fetch:response": "curl 'http://localhost:8448/api/v1/schema/response' > /tmp/pr-web-response-schema.json",
+    "types-make": "run-p types-make:*",
+    "types-make:status": "npx quicktype -s schema /tmp/pr-web-status-schema.json -o src/generated/status.ts --just-types --top-level PrapiStatus",
+    "types-make:message": "npx quicktype -s schema /tmp/pr-web-message-schema.json -o src/generated/message.ts --just-types --top-level PrapiMessage",
+    "types-make:response": "npx quicktype -s schema /tmp/pr-web-response-schema.json -o src/generated/response.ts --just-types --top-level PrapiResponse",
     "validate": "run-p lint test:ci test:e2e:headless"
   },
   "dependencies": {
