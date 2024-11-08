@@ -12,14 +12,14 @@ export const VolumeSlider: React.FC<{
 	className?: string
 	muted: boolean
 	label: string
-	volume: string
+	volume: number
 	onMuteChange?: React.MouseEventHandler<HTMLButtonElement> | undefined
 	onValueChange?: (value: number[]) => void
 	onValueCommit?: (value: number[]) => void
 }> = props => {
 	const [config] = useConfig()
 	const handleVolumeDown = () => {
-		const volume = Number(props.volume)
+		const volume = props.volume
 		if (volume === config.minVolume) {
 			return
 		}
@@ -31,7 +31,7 @@ export const VolumeSlider: React.FC<{
 	}
 
 	const handleVolumeUp = () => {
-		const volume = Number(props.volume)
+		const volume = props.volume
 		if (volume === config.maxVolume) {
 			return
 		}
@@ -58,9 +58,10 @@ export const VolumeSlider: React.FC<{
 			<Small className='self-end truncate text-right text-xs'>{props.label}</Small>
 			<div
 				className={cn(
+					//
 					'text-green-500',
-					Number(props.volume) >= 75 && 'text-orange-500',
-					Number(props.volume) >= 100 && 'text-red-500',
+					props.volume >= 75 && 'text-orange-500',
+					props.volume >= 100 && 'text-red-500',
 				)}
 			>
 				{props.volume}%
@@ -75,7 +76,7 @@ export const VolumeSlider: React.FC<{
 					title={props.label}
 					min={config.minVolume}
 					max={config.maxVolume}
-					value={[Number(props.volume)]}
+					value={[props.volume]}
 					step={1}
 					onValueChange={props.onValueChange}
 					onValueCommit={props.onValueCommit}
