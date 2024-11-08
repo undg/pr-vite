@@ -19,7 +19,7 @@
     "lint:tsc": "tsc",
     "lint:eslint": "eslint --cache --fix .",
     "lint:stylelint": "stylelint --cache --fix --ignore-path .gitignore **/*.css",
-    "types-gen": "run-s types-fetch types-make",
+    "types-gen": "run-s types-fetch types-make format",
     "types-fetch": "run-p types-fetch:*",
     "types-fetch:status": "curl 'http://localhost:8448/api/v1/schema/status' > /tmp/pr-web-status-schema.json",
     "types-fetch:message": "curl 'http://localhost:8448/api/v1/schema/message' > /tmp/pr-web-message-schema.json",
