@@ -24,7 +24,7 @@ export const VolumeSlider: React.FC<{
 			return
 		}
 
-		const newVolume = volume < 10 ? config.minVolume : volume - 10
+		const newVolume = volume < config.stepVolume ? config.minVolume : volume - config.stepVolume
 
 		props.onValueChange?.([newVolume])
 		props.onValueCommit?.([newVolume])
@@ -36,7 +36,7 @@ export const VolumeSlider: React.FC<{
 			return
 		}
 
-		const newVolume = volume > 140 ? config.maxVolume : volume + 10
+		const newVolume = volume > config.maxVolume - config.stepVolume ? config.maxVolume : volume + config.stepVolume
 
 		props.onValueChange?.([newVolume])
 		props.onValueCommit?.([newVolume])

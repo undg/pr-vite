@@ -7,6 +7,7 @@ export const ConfigSchema = z
 	.object({
 		minVolume: z.number().min(MIN_VOLUME).max(MAX_VOLUME).catch(MIN_VOLUME),
 		maxVolume: z.number().max(MAX_VOLUME).catch(MAX_VOLUME),
+		stepVolume: z.number().catch(10),
 		hostname: z.string().describe('Server host address').optional(),
 		port: z
 			.string()
@@ -23,11 +24,13 @@ export const ConfigSchema = z
 		endpoint: z.string().startsWith('/').describe('API endpoint path starting with /'),
 		serverUrl: z.string().optional().describe('Full server URL. Do not edit directly.'),
 	})
-	.transform(({ hostname, port, endpoint, maxVolume, minVolume }) => ({
+	.transform(({ hostname, port, endpoint, maxVolume, minVolume, stepVolume }) => ({
 		/** Min volume for slider, default 0 */
 		minVolume,
 		/** Max volume for slider, default 150 */
 		maxVolume,
+		/** Step volume for slider, default 10 */
+		stepVolume,
 		/** Host address for the server */
 		hostname,
 		/** Port number for the server */

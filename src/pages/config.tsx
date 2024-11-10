@@ -12,7 +12,7 @@ export const Config: FC = () => {
 
 	const handleChange = (type: keyof typeof config) => (e: React.ChangeEvent<HTMLInputElement>) => {
 		let value: string | number = e.currentTarget.value
-		if (type === 'maxVolume' || type === 'minVolume') value = Number(value)
+		if (type === 'maxVolume' || type === 'minVolume' || type === 'stepVolume') value = Number(value)
 		updateConfig({ [type]: value })
 	}
 
@@ -80,6 +80,14 @@ export const Config: FC = () => {
 					value={config.maxVolume}
 					type='number'
 					onChange={handleChange('maxVolume')}
+				/>
+				<Input
+					data-testid={testid.inputStepVolume}
+					label='Step volume'
+					onFocus={e => e.target.select()}
+					value={config.stepVolume}
+					type='number'
+					onChange={handleChange('stepVolume')}
 				/>
 			</section>
 		</Layout>

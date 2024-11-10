@@ -52,5 +52,12 @@ describe(`<Config /> route`, () => {
 			fireEvent.change(input, { target: { value: 100 } })
 			expect(input).toHaveValue(100)
 		})
+
+		test(`Set input step volume`, () => {
+			renderWithRouter(<Config />)
+			const input = screen.getByTestId(testid.inputStepVolume)
+			fireEvent.change(input, { target: { value: 3 } })
+			expect(input).toHaveValue(3)
+		})
 	})
 })

@@ -15,6 +15,7 @@ export const testid = {
 	loadingOrError: 'loading-or-error',
 	inputMinVolume: 'input-min-volume',
 	inputMaxVolume: 'input-max-volume',
+	inputStepVolume: 'input-step-volume',
 	inputHostname: 'input-hostname',
 	inputPort: 'input-port',
 	inputEndpoint: 'input-endpoint',
