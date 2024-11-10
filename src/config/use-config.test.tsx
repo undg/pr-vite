@@ -81,7 +81,7 @@ describe('useConfig', () => {
 			endpoint: '/api/v1/ws',
 			serverUrl: 'ws://localhost:9000/api/v1/ws',
 			minVolume: 0,
-			maxVolume: 250,
+			maxVolume: 150,
 			stepVolume: 10,
 		})
 	})
