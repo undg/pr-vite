@@ -61,6 +61,7 @@ export const VolumeSlider: React.FC<{
 		props.onValueChange?.([newVolume])
 		props.onValueCommit?.([newVolume])
 	}
+
 	return (
 		<div
 			className={cn('grid items-center gap-x-4 gap-y-0', props.className)}

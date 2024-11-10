@@ -15,12 +15,20 @@ describe('<App />', () => {
 		await waitFor(() => expect(screen.queryByTestId('loading-or-error')).not.toBeInTheDocument(), { timeout: 5000 })
 	}
 
-	test.each([
+	it.each([
 		[
 			'load home page',
 			async () => {
 				await waitForLoad()
 				await expect(screen.findByText(dict.headerOutput)).resolves.toBeInTheDocument()
+			},
+		],
+		[
+			'go to input',
+			async () => {
+				await userEvent.click(screen.getByTestId(testid.gotoInputDevices))
+				await waitForLoad()
+				await expect(screen.findByText(dict.headerInput)).resolves.toBeInTheDocument()
 			},
 		],
 		[
