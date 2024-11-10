@@ -13,6 +13,7 @@ describe('useConfig', () => {
 			serverUrl: 'ws://localhost:8448/api/v1/ws',
 			minVolume: 0,
 			maxVolume: 150,
+			stepVolume: 10,
 		})
 	})
 
@@ -35,6 +36,7 @@ describe('useConfig', () => {
 			serverUrl: 'ws://localhost:9000/api/v1/ws',
 			minVolume: 0,
 			maxVolume: 150,
+			stepVolume: 10,
 		})
 	})
 
@@ -57,6 +59,7 @@ describe('useConfig', () => {
 			serverUrl: 'ws://localhost:9000/api/v1/ws',
 			minVolume: 69,
 			maxVolume: 50,
+			stepVolume: 10,
 		})
 	})
 
@@ -78,7 +81,8 @@ describe('useConfig', () => {
 			endpoint: '/api/v1/ws',
 			serverUrl: 'ws://localhost:9000/api/v1/ws',
 			minVolume: 0,
-			maxVolume: 250,
+			maxVolume: 150,
+			stepVolume: 10,
 		})
 	})
 })

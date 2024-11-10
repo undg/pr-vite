@@ -2,18 +2,17 @@ import type { FC } from 'react'
 import { Layout } from '../components/layout'
 import { defaultConfig, useConfig } from '../config/use-config'
 import { testid } from '../constant'
+import { dict } from '../dict'
 import { Button } from '../primitives/button'
 import { Input } from '../primitives/input'
 import { H3 } from '../primitives/typography'
-import { ServerInfo } from './config/server-info'
-import { dict } from '../dict'
 
 export const Config: FC = () => {
 	const [config, updateConfig] = useConfig()
 
 	const handleChange = (type: keyof typeof config) => (e: React.ChangeEvent<HTMLInputElement>) => {
 		let value: string | number = e.currentTarget.value
-		if (type === 'maxVolume' || type === 'minVolume') value = Number(value)
+		if (type === 'maxVolume' || type === 'minVolume' || type === 'stepVolume') value = Number(value)
 		updateConfig({ [type]: value })
 	}
 
@@ -82,10 +81,14 @@ export const Config: FC = () => {
 					type='number'
 					onChange={handleChange('maxVolume')}
 				/>
-			</section>
-
-			<section>
-				<ServerInfo />
+				<Input
+					data-testid={testid.inputStepVolume}
+					label='Step volume'
+					onFocus={e => e.target.select()}
+					value={config.stepVolume}
+					type='number'
+					onChange={handleChange('stepVolume')}
+				/>
 			</section>
 		</Layout>
 	)

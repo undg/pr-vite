@@ -2,27 +2,23 @@ import type { ReactElement } from 'react'
 import { Layout } from '../components/layout'
 import { dict } from '../dict'
 import { H2, P } from '../primitives/typography'
+import { ServerInfo } from '../components/server-info'
 
 export default function About(): ReactElement {
 	return (
 		<Layout header={dict.headerAbout}>
 			<section>
-				<H2>What is Pulse Remote?</H2>
-				<P>
-					Pulse Remote is a simple app that allows Linux users to control their PC's volume remotely, compatible with
-					both PulseAudio and PipeWire.
-				</P>
+				<H2>Pulse Remote</H2>
+				<P>App for Linux. Control PC volume remotely. Works with PulseAudio and PipeWire.</P>
 
-				<H2>Our Story</H2>
+				<H2>Source</H2>
 				<P>
-					Born from the desire to control media volume while relaxing in bed, Pulse Remote brings convenience to Linux
-					users with PCs connected to TVs.
+					<a href='https://github.com/undg/pulse-remote'>github.com/undg/pulse-remote</a>
 				</P>
+			</section>
 
-				<H2>GitHub</H2>
-				<P>
-					Find us on GitHub: <a href='https://github.com/undg/pulse-remote'>github.com/undg/pulse-remote</a>
-				</P>
+			<section>
+				<ServerInfo />
 			</section>
 		</Layout>
 	)

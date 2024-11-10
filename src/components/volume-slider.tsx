@@ -24,7 +24,19 @@ export const VolumeSlider: React.FC<{
 			return
 		}
 
-		const newVolume = volume < 10 ? config.minVolume : volume - 10
+		let newVolume = volume - config.stepVolume
+
+		if (volume < config.minVolume) {
+			newVolume = config.minVolume
+		}
+
+		if (volume < config.stepVolume) {
+			newVolume = config.minVolume
+		}
+
+		if (volume > config.maxVolume) {
+			newVolume = config.maxVolume
+		}
 
 		props.onValueChange?.([newVolume])
 		props.onValueCommit?.([newVolume])
@@ -36,11 +48,20 @@ export const VolumeSlider: React.FC<{
 			return
 		}
 
-		const newVolume = volume > 140 ? config.maxVolume : volume + 10
+		let newVolume = volume + config.stepVolume
+
+		if (volume > config.maxVolume - config.stepVolume) {
+			newVolume = config.maxVolume
+		}
+
+		if (volume < config.minVolume) {
+			newVolume = config.minVolume
+		}
 
 		props.onValueChange?.([newVolume])
 		props.onValueCommit?.([newVolume])
 	}
+
 	return (
 		<div
 			className={cn('grid items-center gap-x-4 gap-y-0', props.className)}
@@ -67,7 +88,7 @@ export const VolumeSlider: React.FC<{
 				{props.volume}%
 			</div>
 			<div className='flex'>
-				<Button variant={`ghost`} onClick={handleVolumeDown}>
+				<Button data-testid={testid.btnVolumeDown} variant={`ghost`} onClick={handleVolumeDown}>
 					<MinusCircleIcon />
 				</Button>
 				<Slider
@@ -81,7 +102,7 @@ export const VolumeSlider: React.FC<{
 					onValueChange={props.onValueChange}
 					onValueCommit={props.onValueCommit}
 				/>
-				<Button variant={`ghost`} onClick={handleVolumeUp}>
+				<Button data-testid={testid.btnVolumeUp} variant={`ghost`} onClick={handleVolumeUp}>
 					<PlusCircleIcon />
 				</Button>
 			</div>
