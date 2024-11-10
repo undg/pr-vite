@@ -1,6 +1,6 @@
 import { render, fireEvent, screen } from '@testing-library/react'
 import { VolumeSlider } from './volume-slider'
-import { testid } from '../constant'
+import { def, testid } from '../constant'
 
 describe('<VolumeSlider />', () => {
 	const defaultProps = {
@@ -24,19 +24,69 @@ describe('<VolumeSlider />', () => {
 		expect(defaultProps.onMuteChange).toHaveBeenCalled()
 	})
 
-	describe('volume up button works', () => {
-		it('volume up button works', () => {
-			render(<VolumeSlider {...defaultProps} />)
+	describe('volume up button', () => {
+		it('increases volume', () => {
+			const volume = 50
+			render(<VolumeSlider {...defaultProps} volume={volume} />)
 			fireEvent.click(screen.getByTestId(testid.btnVolumeUp))
-			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([60])
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([volume + def.VOLUME_STEP])
+		})
+
+		it('stops at max volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.MAX_VOLUME - def.VOLUME_STEP / 2} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeUp))
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([def.MAX_VOLUME])
+		})
+
+		it('does nothing at max volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.MAX_VOLUME} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeUp))
+			expect(defaultProps.onValueCommit).not.toHaveBeenCalled()
+		})
+
+		it('decreases to max volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.MAX_VOLUME + 1} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeUp))
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([def.MAX_VOLUME])
+		})
+
+		it('increases to min volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.MIN_VOLUME - 1} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeUp))
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([def.MIN_VOLUME])
 		})
 	})
 
-	describe('volume down button works', () => {
-		it('decrese volume', () => {
-			render(<VolumeSlider {...defaultProps} />)
+	describe('volume down button', () => {
+		it('decreases volume', () => {
+			const volume = 50
+			render(<VolumeSlider {...defaultProps} volume={volume} />)
 			fireEvent.click(screen.getByTestId(testid.btnVolumeDown))
-			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([40])
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([volume - def.VOLUME_STEP])
+		})
+
+		it('stops at min volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.VOLUME_STEP / 2} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeDown))
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([def.MIN_VOLUME])
+		})
+
+		it('does nothing at min volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.MIN_VOLUME} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeDown))
+			expect(defaultProps.onValueCommit).not.toHaveBeenCalled()
+		})
+
+		it('decreases to max volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.MAX_VOLUME + 1} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeDown))
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([def.MAX_VOLUME])
+		})
+
+		it('increases to min volume', () => {
+			render(<VolumeSlider {...defaultProps} volume={def.MIN_VOLUME - 1} />)
+			fireEvent.click(screen.getByTestId(testid.btnVolumeDown))
+			expect(defaultProps.onValueCommit).toHaveBeenCalledWith([def.MIN_VOLUME])
 		})
 	})
 })
