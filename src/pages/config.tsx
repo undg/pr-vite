@@ -2,11 +2,10 @@ import type { FC } from 'react'
 import { Layout } from '../components/layout'
 import { defaultConfig, useConfig } from '../config/use-config'
 import { testid } from '../constant'
+import { dict } from '../dict'
 import { Button } from '../primitives/button'
 import { Input } from '../primitives/input'
 import { H3 } from '../primitives/typography'
-import { ServerInfo } from './config/server-info'
-import { dict } from '../dict'
 
 export const Config: FC = () => {
 	const [config, updateConfig] = useConfig()
@@ -82,10 +81,6 @@ export const Config: FC = () => {
 					type='number'
 					onChange={handleChange('maxVolume')}
 				/>
-			</section>
-
-			<section>
-				<ServerInfo />
 			</section>
 		</Layout>
 	)
