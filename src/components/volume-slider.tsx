@@ -1,11 +1,18 @@
-import { MinusCircleIcon, PlusCircleIcon, Volume1Icon, Volume2Icon, VolumeOff } from 'lucide-react'
+import { MinusCircleIcon, PlusCircleIcon, Volume, Volume1, Volume2, VolumeOff } from 'lucide-react'
+import { useConfig } from '../config/use-config'
 import { testid } from '../constant'
 import { Button } from '../primitives/button'
 import { Slider } from '../primitives/slider'
 import { Toggle } from '../primitives/toggle'
 import { Small } from '../primitives/typography'
 import { cn } from '../utils/cn'
-import { useConfig } from '../config/use-config'
+
+const getVolumeIcon = (volume: number, muted: boolean) => {
+	if (muted || volume === 0) return <VolumeOff color='red' />
+	if (volume <= 50) return <Volume />
+	if (volume <= 90) return <Volume1 />
+	return <Volume2 />
+}
 
 export const VolumeSlider: React.FC<{
 	children?: React.ReactNode
@@ -74,9 +81,7 @@ export const VolumeSlider: React.FC<{
 				data-testid={testid.btnMuteToggle}
 				onClick={props.onMuteChange}
 			>
-				{(props.muted || props.volume === 0) && <VolumeOff color='red' />}
-				{(!(props.muted || props.volume === 0) && props.volume <= 75) && <Volume1Icon />}
-				{(!(props.muted || props.volume === 0) && props.volume > 75) && <Volume2Icon />}
+				{getVolumeIcon(props.volume, props.muted)}
 			</Toggle>
 			<Small className='self-end truncate text-right text-xs'>{props.label}</Small>
 			<div className='col-span-2 flex'>
