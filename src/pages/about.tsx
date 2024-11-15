@@ -10,8 +10,6 @@ export default function About(): ReactElement {
 			<section>
 				<H2>Pulse Remote</H2>
 				<P>App for Linux. Control PC volume remotely. Works with PulseAudio and PipeWire.</P>
-
-				<H2>Source</H2>
 				<P>
 					<a href='https://github.com/undg/pulse-remote'>github.com/undg/pulse-remote</a>
 				</P>
