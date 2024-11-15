@@ -1,11 +1,18 @@
-import { MinusCircleIcon, PlusCircleIcon, Volume, VolumeOff } from 'lucide-react'
+import { MinusCircleIcon, PlusCircleIcon, Volume, Volume1, Volume2, VolumeOff } from 'lucide-react'
+import { useConfig } from '../config/use-config'
 import { testid } from '../constant'
 import { Button } from '../primitives/button'
 import { Slider } from '../primitives/slider'
 import { Toggle } from '../primitives/toggle'
 import { Small } from '../primitives/typography'
 import { cn } from '../utils/cn'
-import { useConfig } from '../config/use-config'
+
+const getVolumeIcon = (volume: number, muted: boolean) => {
+	if (muted || volume === 0) return <VolumeOff color='red' />
+	if (volume <= 50) return <Volume />
+	if (volume <= 90) return <Volume1 />
+	return <Volume2 />
+}
 
 export const VolumeSlider: React.FC<{
 	children?: React.ReactNode
@@ -68,31 +75,32 @@ export const VolumeSlider: React.FC<{
 			style={{ gridTemplateColumns: '2em auto', gridTemplateRows: 'repeat(1em)' }}
 		>
 			<Toggle
-				variant='outline'
+				variant='default'
 				size='sm'
 				pressed={props.muted}
 				data-testid={testid.btnMuteToggle}
 				onClick={props.onMuteChange}
 			>
-				{props.muted ? <VolumeOff color='red' /> : <Volume />}
+				{getVolumeIcon(props.volume, props.muted)}
 			</Toggle>
 			<Small className='self-end truncate text-right text-xs'>{props.label}</Small>
-			<div
-				className={cn(
-					//
-					'text-green-500',
-					props.volume >= 75 && 'text-orange-500',
-					props.volume >= 100 && 'text-red-500',
-				)}
-			>
-				{props.volume}%
-			</div>
-			<div className='flex'>
-				<Button data-testid={testid.btnVolumeDown} variant={`ghost`} onClick={handleVolumeDown}>
+			<div className='col-span-2 flex'>
+				<Button data-testid={testid.btnVolumeDown} variant={`ghost`} size='icon' onClick={handleVolumeDown}>
 					<MinusCircleIcon />
 				</Button>
 				<Slider
 					className='top-2 col-span-1 mb-4'
+					thumbContent={
+						<span
+							className={cn(
+								'text-xs text-green-500',
+								props.volume >= 75 && 'text-orange-500',
+								props.volume >= 100 && 'text-red-500',
+							)}
+						>
+							{props.volume}%
+						</span>
+					}
 					name={props.label}
 					title={props.label}
 					min={config.minVolume}
@@ -102,7 +110,7 @@ export const VolumeSlider: React.FC<{
 					onValueChange={props.onValueChange}
 					onValueCommit={props.onValueCommit}
 				/>
-				<Button data-testid={testid.btnVolumeUp} variant={`ghost`} onClick={handleVolumeUp}>
+				<Button data-testid={testid.btnVolumeUp} variant={`ghost`} size='icon' onClick={handleVolumeUp}>
 					<PlusCircleIcon />
 				</Button>
 			</div>
