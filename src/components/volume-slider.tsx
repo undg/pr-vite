@@ -77,22 +77,23 @@ export const VolumeSlider: React.FC<{
 				{props.muted ? <VolumeOff color='red' /> : <Volume />}
 			</Toggle>
 			<Small className='self-end truncate text-right text-xs'>{props.label}</Small>
-			<div
-				className={cn(
-					//
-					'text-green-500',
-					props.volume >= 75 && 'text-orange-500',
-					props.volume >= 100 && 'text-red-500',
-				)}
-			>
-				{props.volume}%
-			</div>
-			<div className='flex'>
+			<div className='col-span-2 flex'>
 				<Button data-testid={testid.btnVolumeDown} variant={`ghost`} onClick={handleVolumeDown}>
 					<MinusCircleIcon />
 				</Button>
 				<Slider
 					className='top-2 col-span-1 mb-4'
+					thumbContent={
+						<span
+							className={cn(
+								'text-xs text-green-500',
+								props.volume >= 75 && 'text-orange-500',
+								props.volume >= 100 && 'text-red-500',
+							)}
+						>
+							{props.volume}%
+						</span>
+					}
 					name={props.label}
 					title={props.label}
 					min={config.minVolume}
