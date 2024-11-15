@@ -1,4 +1,4 @@
-import { MinusCircleIcon, PlusCircleIcon, Volume, VolumeOff } from 'lucide-react'
+import { MinusCircleIcon, PlusCircleIcon, Volume1Icon, Volume2Icon, VolumeOff } from 'lucide-react'
 import { testid } from '../constant'
 import { Button } from '../primitives/button'
 import { Slider } from '../primitives/slider'
@@ -68,13 +68,15 @@ export const VolumeSlider: React.FC<{
 			style={{ gridTemplateColumns: '2em auto', gridTemplateRows: 'repeat(1em)' }}
 		>
 			<Toggle
-				variant='outline'
+				variant='default'
 				size='sm'
 				pressed={props.muted}
 				data-testid={testid.btnMuteToggle}
 				onClick={props.onMuteChange}
 			>
-				{props.muted ? <VolumeOff color='red' /> : <Volume />}
+				{(props.muted || props.volume === 0) && <VolumeOff color='red' />}
+				{(!(props.muted || props.volume === 0) && props.volume <= 75) && <Volume1Icon />}
+				{(!(props.muted || props.volume === 0) && props.volume > 75) && <Volume2Icon />}
 			</Toggle>
 			<Small className='self-end truncate text-right text-xs'>{props.label}</Small>
 			<div className='col-span-2 flex'>
