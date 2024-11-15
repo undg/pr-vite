@@ -3,7 +3,7 @@ import { cn } from '../utils/cn'
 
 export const H1: FC<PropsWithChildren<{ className?: string }>> = props => {
 	return (
-		<h1 className={cn('scroll-m-20 pb-8 text-3xl font-extrabold tracking-tight lg:text-5xl', props.className)}>
+		<h1 className={cn('scroll-m-20 pb-8 text-2xl font-extrabold tracking-tight lg:text-5xl', props.className)}>
 			{props.children}
 		</h1>
 	)
@@ -12,7 +12,7 @@ export const H1: FC<PropsWithChildren<{ className?: string }>> = props => {
 export const H2: FC<PropsWithChildren<{ className?: string }>> = props => {
 	return (
 		<h2
-			className={cn('first:mt- mt-6 scroll-m-20 border-b pb-2 text-2xl font-semibold tracking-tight', props.className)}
+			className={cn('first:mt- text-1xl mt-6 scroll-m-20 border-b pb-2 font-semibold tracking-tight', props.className)}
 		>
 			{props.children}
 		</h2>
@@ -21,13 +21,13 @@ export const H2: FC<PropsWithChildren<{ className?: string }>> = props => {
 
 export const H3: FC<PropsWithChildren<{ className?: string }>> = props => {
 	return (
-		<h3 className={cn('text-1xl mt-6 scroll-m-20 font-semibold tracking-tight', props.className)}>{props.children}</h3>
+		<h3 className={cn('mt-6 scroll-m-20 text-xl font-semibold tracking-tight', props.className)}>{props.children}</h3>
 	)
 }
 
 export const H4: FC<PropsWithChildren<{ className?: string }>> = props => {
 	return (
-		<h4 className={cn('mt-6 scroll-m-20 text-xl font-semibold tracking-tight', props.className)}>{props.children}</h4>
+		<h4 className={cn('mt-6 scroll-m-20 text-lg font-semibold tracking-tight', props.className)}>{props.children}</h4>
 	)
 }
 
