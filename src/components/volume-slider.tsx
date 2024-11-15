@@ -78,7 +78,7 @@ export const VolumeSlider: React.FC<{
 			</Toggle>
 			<Small className='self-end truncate text-right text-xs'>{props.label}</Small>
 			<div className='col-span-2 flex'>
-				<Button data-testid={testid.btnVolumeDown} variant={`ghost`} onClick={handleVolumeDown}>
+				<Button data-testid={testid.btnVolumeDown} variant={`ghost`} size='icon' onClick={handleVolumeDown}>
 					<MinusCircleIcon />
 				</Button>
 				<Slider
@@ -103,7 +103,7 @@ export const VolumeSlider: React.FC<{
 					onValueChange={props.onValueChange}
 					onValueCommit={props.onValueCommit}
 				/>
-				<Button data-testid={testid.btnVolumeUp} variant={`ghost`} onClick={handleVolumeUp}>
+				<Button data-testid={testid.btnVolumeUp} variant={`ghost`} size='icon' onClick={handleVolumeUp}>
 					<PlusCircleIcon />
 				</Button>
 			</div>
