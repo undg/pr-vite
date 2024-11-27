@@ -79,8 +79,8 @@ importers:
         specifier: ^9.14.0
         version: 9.15.0
       '@nabla/vite-plugin-eslint':
-        specifier: 2.0.4
-        version: 2.0.4(eslint@9.15.0(jiti@1.21.6))(vite@5.4.11(@types/node@16.18.119)(terser@5.36.0))
+        specifier: 2.0.5
+        version: 2.0.5(eslint@9.15.0(jiti@1.21.6))(vite@5.4.11(@types/node@16.18.119)(terser@5.36.0))
       '@tailwindcss/forms':
         specifier: 0.5.9
         version: 0.5.9(tailwindcss@3.4.15(ts-node@10.9.1(@types/node@16.18.119)(typescript@5.7.2)))
@@ -1147,11 +1147,11 @@ packages:
     resolution: {integrity: sha512-lDiHQMCBV9qz8c7+zxaNFQtWWaSogTYkqJ3Pg+FGYYC76nsfSxkMQ0df8fojyz16E+w4vp57NLjN2muNG7LugQ==}
     engines: {node: '>=18'}
 
-  '@nabla/vite-plugin-eslint@2.0.4':
-    resolution: {integrity: sha512-hXLv7XPZLKP54AHLI6JzlCRYptf34rBmT1FyRBi++iN5ucjO7CEf5etV3DfQ2rfTpgMbY+3hoCAfwilA6lyWdw==}
+  '@nabla/vite-plugin-eslint@2.0.5':
+    resolution: {integrity: sha512-m6Q8ZVM0ASZfYyfFbG661mDklhZQZEeBMQgtB26NhdadxPSctHzHsUbF87msdSb0V4Z8R1p/vRkB5SHNOpANAQ==}
     peerDependencies:
       eslint: ^8.45 || ^9
-      vite: ^4 || ^5
+      vite: ^4 || ^5 || ^6
 
   '@nodelib/fs.scandir@2.1.5':
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
@@ -6309,7 +6309,7 @@ snapshots:
       outvariant: 1.4.3
       strict-event-emitter: 0.5.1
 
-  '@nabla/vite-plugin-eslint@2.0.4(eslint@9.15.0(jiti@1.21.6))(vite@5.4.11(@types/node@16.18.119)(terser@5.36.0))':
+  '@nabla/vite-plugin-eslint@2.0.5(eslint@9.15.0(jiti@1.21.6))(vite@5.4.11(@types/node@16.18.119)(terser@5.36.0))':
     dependencies:
       '@types/eslint': 8.21.1
       chalk: 4.1.2
