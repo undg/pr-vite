@@ -54,8 +54,8 @@ importers:
         specifier: 18.3.1
         version: 18.3.1(react@18.3.1)
       react-router-dom:
-        specifier: 6.28.1
-        version: 6.28.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+        specifier: 6.28.2
+        version: 6.28.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-use-websocket:
         specifier: 4.11.1
         version: 4.11.1
@@ -1371,8 +1371,8 @@ packages:
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0 || ^5.0.0
 
-  '@remix-run/router@1.21.0':
-    resolution: {integrity: sha512-xfSkCAchbdG5PnbrKqFWwia4Bi61nH+wm8wLEqfHDyp7Y3dZzgqS2itV8i4gAq9pC2HsTpwyBC6Ds8VHZ96JlA==}
+  '@remix-run/router@1.21.1':
+    resolution: {integrity: sha512-KeBYSwohb8g4/wCcnksvKTYlg69O62sQeLynn2YE+5z7JWEj95if27kclW9QqbrlsQ2DINI8fjbV3zyuKfwjKg==}
     engines: {node: '>=14.0.0'}
 
   '@rollup/plugin-babel@5.3.1':
@@ -4424,15 +4424,15 @@ packages:
       react: ^16.14.0 || ^17.0.0 || ^18.0.0
       react-dom: ^16.14.0 || ^17.0.0 || ^18.0.0
 
-  react-router-dom@6.28.1:
-    resolution: {integrity: sha512-YraE27C/RdjcZwl5UCqF/ffXnZDxpJdk9Q6jw38SZHjXs7NNdpViq2l2c7fO7+4uWaEfcwfGCv3RSg4e1By/fQ==}
+  react-router-dom@6.28.2:
+    resolution: {integrity: sha512-O81EWqNJWqvlN/a7eTudAdQm0TbI7hw+WIi7OwwMcTn5JMyZ0ibTFNGz+t+Lju0df4LcqowCegcrK22lB1q9Kw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
       react-dom: '>=16.8'
 
-  react-router@6.28.1:
-    resolution: {integrity: sha512-2omQTA3rkMljmrvvo6WtewGdVh45SpL9hGiCI9uUrwGGfNFDIvGK4gYJsKlJoNVi6AQZcopSCballL+QGOm7fA==}
+  react-router@6.28.2:
+    resolution: {integrity: sha512-BgFY7+wEGVjHCiqaj2XiUBQ1kkzfg6UoKYwEe0wv+FF+HNPCxtS/MVPvLAPH++EsuCMReZl9RYVGqcHLk5ms3A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8'
@@ -6840,7 +6840,7 @@ snapshots:
       immutable: 4.3.7
       redux: 5.0.1
 
-  '@remix-run/router@1.21.0': {}
+  '@remix-run/router@1.21.1': {}
 
   '@rollup/plugin-babel@5.3.1(@babel/core@7.26.0)(@types/babel__core@7.20.5)(rollup@2.79.2)':
     dependencies:
@@ -10174,16 +10174,16 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
 
-  react-router-dom@6.28.1(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
+  react-router-dom@6.28.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
-      '@remix-run/router': 1.21.0
+      '@remix-run/router': 1.21.1
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
-      react-router: 6.28.1(react@18.3.1)
+      react-router: 6.28.2(react@18.3.1)
 
-  react-router@6.28.1(react@18.3.1):
+  react-router@6.28.2(react@18.3.1):
     dependencies:
-      '@remix-run/router': 1.21.0
+      '@remix-run/router': 1.21.1
       react: 18.3.1
 
   react-style-singleton@2.2.1(@types/react@18.3.18)(react@18.3.1):
